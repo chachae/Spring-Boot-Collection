@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql:///jwt?useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+server:
+  servlet:
+    context-path: /api/v1
+  port: 9000
