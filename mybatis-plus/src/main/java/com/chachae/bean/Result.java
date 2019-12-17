@@ -30,7 +30,7 @@ public class Result<T> extends Model<Result<T>> {
   public static <T> Result<T> ok(T t) {
     Result<T> result = new Result<>();
     result.code = HttpStatus.OK.value();
-    result.msg = REnum.SUCCESS.desc;
+    result.msg = REnum.SUCCESS.desc();
     result.time = DateUtil.now();
     result.data = t;
     return result;
@@ -46,8 +46,8 @@ public class Result<T> extends Model<Result<T>> {
   @SuppressWarnings("unchecked")
   public static <T> Result<T> ok(IPage<T> t) {
     Result<T> result = new Result<>();
-    result.code = HttpStatus.OK.value();
-    result.msg = REnum.SUCCESS.desc;
+    result.code = REnum.SUCCESS.value();
+    result.msg = REnum.SUCCESS.desc();
     result.time = DateUtil.now();
     result.data = (T) PageResult.warp(t);
     return result;

@@ -25,7 +25,7 @@ public class PageResult<T> {
   /** 记录 */
   private List<T> records;
 
-  protected static <T> PageResult<T> warp(IPage<T> iPage) {
+  public static <T> PageResult<T> warp(IPage<T> iPage) {
     PageResult<T> result = new PageResult<>();
     result.current = iPage.getCurrent();
     result.total = iPage.getTotal();

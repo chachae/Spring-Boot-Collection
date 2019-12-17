@@ -12,11 +12,19 @@ public enum REnum {
   // 接口请求成功
   SUCCESS(200, "API request success"),
   // 接口请求失败
-  FAIL(500, "API request fail");
+  FAIL(400, "API request fail");
 
   /** 取值 */
-  public final Integer val;
+  private final Integer value;
 
   /** 取描述 */
-  public final String desc;
+  private final String desc;
+
+  public Integer value() {
+    return this.value;
+  }
+
+  public String desc() {
+    return this.desc;
+  }
 }

@@ -6,9 +6,7 @@ import com.chachae.bean.Result;
 import com.chachae.entity.bo.User;
 import com.chachae.entity.dto.UserDTO;
 import com.chachae.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -26,5 +24,23 @@ public class UserController {
   public Result<User> list(Page<User> page, UserDTO dto) {
     IPage<User> result = this.userService.selectPage(page, dto);
     return Result.ok(result);
+  }
+
+  @PostMapping("/save")
+  public Result<User> save(User user) {
+    this.userService.save(user);
+    return Result.ok(user);
+  }
+
+  @PutMapping("/update")
+  public Result<User> update(User user) {
+    this.userService.updateById(user);
+    return Result.ok(user);
+  }
+
+  @DeleteMapping("/delete/{id}")
+  public Result<Boolean> delete(@PathVariable Long id) {
+    boolean res = this.userService.removeById(id);
+    return Result.ok(res);
   }
 }

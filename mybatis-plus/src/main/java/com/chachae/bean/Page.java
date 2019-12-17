@@ -8,7 +8,9 @@ public class Page<T> extends com.baomidou.mybatisplus.extension.plugins.paginati
 
   /** 修改默认Page 无参构造 */
   public Page() {
+    // 父实现
     super();
+    // 默认分页每页数据数
     this.setSize(5L);
   }
 }

@@ -1,7 +1,6 @@
 package com.chachae.entity.vo;
 
 import lombok.Data;
-import org.apache.catalina.User;
 
 /**
  * @author chachae
@@ -9,4 +8,10 @@ import org.apache.catalina.User;
  */
 @Data
 public class UserVO {
+
+  private Integer id;
+
+  private String userName;
+
+  private Integer role;
 }

@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.chachae.entity.bo.User;
 import com.chachae.entity.dto.UserDTO;
+import com.chachae.entity.vo.UserVO;
 
 /**
  * @author chachae
