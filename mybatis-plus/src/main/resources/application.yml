@@ -4,7 +4,13 @@ spring:
     password: 123456
     url: jdbc:mysql:///jwt?useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
+  jackson:
+    # 空字段不序列化
+    default-property-inclusion: non_null
 server:
   servlet:
     context-path: /api/v1
   port: 9000
+
+mybatis-plus:
+  type-aliases-package: com.chachae.entity

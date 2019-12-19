@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.chachae.entity.bo.User;
 import com.chachae.entity.dto.UserDTO;
-import com.chachae.entity.vo.UserVO;
 
 /**
  * @author chachae
@@ -21,4 +20,22 @@ public interface UserService extends IService<User> {
    * @return IPage对象
    */
   IPage<User> selectPage(Page<User> page, UserDTO dto);
+
+  /**
+   * 新增用户
+   *
+   * @param entity 用户信息
+   * @param ids 角色id
+   * @return boolean
+   */
+  boolean save(User entity, Long[] ids);
+
+  /**
+   * 关系用户信息
+   *
+   * @param entity 用户信息
+   * @param ids 角色id
+   * @return boolean
+   */
+  boolean updateById(User entity, Long[] ids);
 }

@@ -12,7 +12,9 @@ public enum REnum {
   // 接口请求成功
   SUCCESS(200, "API request success"),
   // 接口请求失败
-  FAIL(400, "API request fail");
+  FAIL(400, "API request fail"),
+  // 服务器异常
+  SERVER_ERROR(500, "Internal Server Error");
 
   /** 取值 */
   private final Integer value;

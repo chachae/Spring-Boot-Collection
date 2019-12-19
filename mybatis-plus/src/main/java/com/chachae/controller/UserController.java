@@ -9,6 +9,7 @@ import com.chachae.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 /**
  * @author chachae
@@ -20,6 +21,13 @@ public class UserController {
 
   @Resource private UserService userService;
 
+  /**
+   * 模糊查询
+   *
+   * @param page 分页参数
+   * @param dto 模糊条件
+   * @return 分页结果
+   */
   @GetMapping("/list")
   public Result<User> list(Page<User> page, UserDTO dto) {
     IPage<User> result = this.userService.selectPage(page, dto);
@@ -27,15 +35,15 @@ public class UserController {
   }
 
   @PostMapping("/save")
-  public Result<User> save(User user) {
-    this.userService.save(user);
-    return Result.ok(user);
+  public Result<Boolean> save(@Valid User user, Long[] ids) {
+    boolean res = this.userService.save(user, ids);
+    return Result.ok(res);
   }
 
   @PutMapping("/update")
-  public Result<User> update(User user) {
-    this.userService.updateById(user);
-    return Result.ok(user);
+  public Result<Boolean> update(@Valid User user, Long[] ids) {
+    boolean res = this.userService.updateById(user, ids);
+    return Result.ok(res);
   }
 
   @DeleteMapping("/delete/{id}")

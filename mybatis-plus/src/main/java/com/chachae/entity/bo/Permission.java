@@ -7,22 +7,19 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.validation.constraints.NotEmpty;
-
 /**
  * @author chachae
- * @date 2019/12/16 14:38
+ * @date 2019/12/19 21:11
  */
+@TableName(value = "t_permission")
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("t_user")
-public class User extends Model<User> {
+public class Permission extends Model<Permission> {
 
   @TableId(type = IdType.AUTO)
-  private Long id;
+  private Integer id;
 
-  @NotEmpty(message = "用户名不能为空")
-  private String userName;
+  private String name;
 
-  private String password;
+  private String expression;
 }

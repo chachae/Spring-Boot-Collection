@@ -11,18 +11,18 @@ import javax.validation.constraints.NotEmpty;
 
 /**
  * @author chachae
- * @date 2019/12/16 14:38
+ * @date 2019/12/18 13:34
  */
+@TableName(value = "t_role")
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("t_user")
-public class User extends Model<User> {
+public class Role extends Model<Role> {
 
   @TableId(type = IdType.AUTO)
   private Long id;
 
-  @NotEmpty(message = "用户名不能为空")
-  private String userName;
+  @NotEmpty(message = "角色名不能为空")
+  private String name;
 
-  private String password;
+  private String description;
 }

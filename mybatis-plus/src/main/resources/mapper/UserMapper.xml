@@ -2,4 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chachae.dao.UserDAO">
 
+    <!-- 维护用户-角色中间表数据【新增】 -->
+    <insert id="saveRelation">
+        INSERT INTO t_user_role
+        SET user_id = #{userId,jdbcType=BIGINT},
+            role_id = #{roleId,jdbcType=BIGINT};
+    </insert>
+
+    <!-- 维护用户-角色中间表数据【删除】 -->
+    <delete id="removeRelation">
+        DELETE
+        FROM t_user_role
+        WHERE user_id = #{userId,jdbcType=BIGINT}
+    </delete>
 </mapper>
