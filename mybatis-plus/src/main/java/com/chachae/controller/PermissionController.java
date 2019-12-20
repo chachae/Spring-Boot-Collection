@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * @author chachae
@@ -20,6 +21,12 @@ import javax.validation.Valid;
 public class PermissionController {
 
   @Resource private PermissionService permissionService;
+
+  @GetMapping("/all")
+  public Result<List<Permission>> all() {
+    List<Permission> list = this.permissionService.list();
+    return Result.ok(list);
+  }
 
   @GetMapping("/list")
   public Result<Permission> list(Page<Permission> page, PermissionDTO dto) {

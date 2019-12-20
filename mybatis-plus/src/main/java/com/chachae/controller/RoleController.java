@@ -9,6 +9,8 @@ import com.chachae.service.RoleService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
+import java.util.List;
 
 /**
  * @author chachae
@@ -20,6 +22,12 @@ public class RoleController {
 
   @Resource private RoleService roleService;
 
+  @GetMapping("/all")
+  public Result<List<Role>> all() {
+    List<Role> list = this.roleService.list();
+    return Result.ok(list);
+  }
+
   @GetMapping("/list")
   public Result<Role> list(Page<Role> page, RoleDTO dto) {
     IPage<Role> result = this.roleService.selectPage(page, dto);
@@ -27,7 +35,7 @@ public class RoleController {
   }
 
   @PostMapping("/save")
-  public Result<Boolean> save(Role role, Long[] ids) {
+  public Result<Boolean> save(@Valid Role role, Long[] ids) {
     boolean res = this.roleService.save(role, ids);
     return Result.ok(res);
   }
@@ -39,7 +47,7 @@ public class RoleController {
   }
 
   @PutMapping("/update")
-  public Result<Boolean> update(Role role, Long[] ids) {
+  public Result<Boolean> update(@Valid Role role, Long[] ids) {
     boolean res = this.roleService.updateById(role, ids);
     return Result.ok(res);
   }

@@ -25,16 +25,16 @@ public interface UserService extends IService<User> {
    * 新增用户
    *
    * @param entity 用户信息
-   * @param ids 角色id
+   * @param ids 角色id 集合
    * @return boolean
    */
   boolean save(User entity, Long[] ids);
 
   /**
-   * 关系用户信息
+   * 更新用户信息
    *
    * @param entity 用户信息
-   * @param ids 角色id
+   * @param ids 角色id 集合
    * @return boolean
    */
   boolean updateById(User entity, Long[] ids);

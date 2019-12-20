@@ -25,7 +25,7 @@ public interface RoleService extends IService<Role> {
    * 新增角色
    *
    * @param role 角色信息
-   * @param ids 权限id
+   * @param ids 权限id 集合
    * @return boolean
    */
   boolean save(Role role, Long[] ids);
@@ -34,7 +34,7 @@ public interface RoleService extends IService<Role> {
    * 更新角色信息
    *
    * @param role 角色信息
-   * @param ids 权限id
+   * @param ids 权限id 集合
    * @return boolean
    */
   boolean updateById(Role role, Long[] ids);

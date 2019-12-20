@@ -15,4 +15,10 @@
         FROM t_user_role
         WHERE user_id = #{userId,jdbcType=BIGINT}
     </delete>
+
+    <delete id="removeRelationByRoleId">
+        DELETE
+        FROM t_user_role
+        WHERE role_id = #{roleId,jdbcType=BIGINT}
+    </delete>
 </mapper>

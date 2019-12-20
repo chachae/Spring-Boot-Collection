@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.chachae.dao.RoleDAO;
+import com.chachae.dao.UserDAO;
 import com.chachae.entity.bo.Role;
 import com.chachae.entity.dto.RoleDTO;
 import com.chachae.exceptions.ApiException;
@@ -24,6 +25,7 @@ import java.io.Serializable;
 public class RoleServiceImpl extends ServiceImpl<RoleDAO, Role> implements RoleService {
 
   @Resource private RoleDAO roleDAO;
+  @Resource private UserDAO userDAO;
 
   @Override
   public IPage<Role> selectPage(Page<Role> page, RoleDTO dto) {
@@ -37,7 +39,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleDAO, Role> implements RoleS
   @Override
   @Transactional(rollbackFor = ApiException.class)
   public boolean save(Role entity, Long[] ids) {
-    boolean res = super.save(entity);
+    boolean res = this.save(entity);
     if (res && ids.length > 0) {
       Long roleId = entity.getId();
       for (Long id : ids) {
@@ -53,6 +55,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleDAO, Role> implements RoleS
     boolean res = super.removeById(id);
     if (res) {
       this.roleDAO.removeRelation((Long) id);
+      this.userDAO.removeRelationByRoleId((Long) id);
     }
     return res;
   }
@@ -60,7 +63,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleDAO, Role> implements RoleS
   @Override
   @Transactional(rollbackFor = ApiException.class)
   public boolean updateById(Role entity, Long[] ids) {
-    boolean res = super.updateById(entity);
+    boolean res = this.updateById(entity);
     if (res && ids.length > 0) {
       Long roleId = entity.getId();
       this.roleDAO.removeRelation(roleId);

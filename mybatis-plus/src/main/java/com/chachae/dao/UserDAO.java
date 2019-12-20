@@ -26,4 +26,12 @@ public interface UserDAO extends BaseMapper<User> {
    * @return boolean
    */
   boolean removeRelation(@Param("userId") Long userId);
+
+  /**
+   * 删除用户角色中间表数据
+   *
+   * @param roleId 角色id
+   * @return boolean
+   */
+  boolean removeRelationByRoleId(@Param("roleId") Long roleId);
 }

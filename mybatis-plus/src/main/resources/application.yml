@@ -7,6 +7,7 @@ spring:
   jackson:
     # 空字段不序列化
     default-property-inclusion: non_null
+    date-format: yyyy-MM-dd HH:mm:ss
 server:
   servlet:
     context-path: /api/v1

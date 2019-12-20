@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chachae.dao.UserInfoDAO">
+
+    <select id="selectPageVO" resultType="UserInfoVO">
+        SELECT t_user.user_name, t_user_info.*
+        FROM t_user_info
+        LEFT JOIN t_user ON t_user_info.id = t_user.id
+        <where>
+            <if test="dto.admin != null">
+                t_user_info.admin = #{dto.admin,jdbcType=BOOLEAN}
+            </if>
+            <if test="dto.gender != null">
+                AND t_user_info.gender = #{dto.gender,jdbcType=INTEGER}
+            </if>
+            <if test="dto.keyword != null and dto.keyword != ''">
+                AND t_user.user_name LIKE CONCAT( '%', #{dto.keyword,jdbcType=VARCHAR},'%')
+            </if>
+        </where>
+    </select>
+
+</mapper>

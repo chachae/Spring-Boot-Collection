@@ -68,10 +68,12 @@ public class GlobalException {
     }
 
     // 处理异常日志信息
-    for (StackTraceElement elem : e.getStackTrace()) {
-      if (elem.getClassName().contains("com.chachae")) {
-        log.error("{}:{}", index, elem.toString());
-        index++;
+    if (!(e instanceof ApiException)) {
+      for (StackTraceElement elem : e.getStackTrace()) {
+        if (elem.getClassName().contains("com.chachae")) {
+          log.error("{}:{}", index, elem.toString());
+          index++;
+        }
       }
     }
 
