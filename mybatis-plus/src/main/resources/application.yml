@@ -4,10 +4,22 @@ spring:
     password: 123456
     url: jdbc:mysql:///jwt?useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      auto-commit: true
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      connection-test-query: SELECT 1
+      minimum-idle: 10
+      maximum-pool-size: 10
+      read-only: false
+
   jackson:
     # 空字段不序列化
     default-property-inclusion: non_null
     date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
 server:
   servlet:
     context-path: /api/v1
@@ -15,3 +27,6 @@ server:
 
 mybatis-plus:
   type-aliases-package: com.chachae.entity
+  global-config:
+    # 关闭 mybatis-plus的 banner
+    banner: false

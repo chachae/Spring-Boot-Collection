@@ -7,10 +7,16 @@ import com.chachae.dao.UserInfoDAO;
 import com.chachae.entity.bo.UserInfo;
 import com.chachae.entity.dto.UserInfoDTO;
 import com.chachae.entity.vo.UserInfoVO;
+import com.chachae.exceptions.ApiException;
 import com.chachae.service.UserInfoService;
+import com.chachae.util.DateUtil;
+import com.chachae.util.HttpContextUtil;
+import com.chachae.util.IPUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author chachae
@@ -25,5 +31,17 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoDAO, UserInfo>
   @Override
   public IPage<UserInfoVO> selectPageVO(Page<UserInfo> page, UserInfoDTO dto) {
     return this.userInfoDAO.selectPageVO(page, dto);
+  }
+
+  @Override
+  @Transactional(rollbackFor = ApiException.class)
+  public boolean updateById(UserInfo entity) {
+    // 设置更新时间
+    entity.setUpdateTime(DateUtil.nowDate());
+    // 设置IP
+    HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
+    String ip = IPUtil.getIpAddr(request);
+    entity.setLoginIp(ip);
+    return super.updateById(entity);
   }
 }

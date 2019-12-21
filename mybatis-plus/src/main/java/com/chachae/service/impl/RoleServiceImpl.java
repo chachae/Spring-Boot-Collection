@@ -40,7 +40,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleDAO, Role> implements RoleS
   @Transactional(rollbackFor = ApiException.class)
   public boolean save(Role entity, Long[] ids) {
     boolean res = this.save(entity);
-    if (res && ids.length > 0) {
+    if (res && ids != null) {
       Long roleId = entity.getId();
       for (Long id : ids) {
         this.roleDAO.saveRelation(roleId, id);
@@ -64,7 +64,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleDAO, Role> implements RoleS
   @Transactional(rollbackFor = ApiException.class)
   public boolean updateById(Role entity, Long[] ids) {
     boolean res = this.updateById(entity);
-    if (res && ids.length > 0) {
+    if (res && ids != null) {
       Long roleId = entity.getId();
       this.roleDAO.removeRelation(roleId);
       for (Long id : ids) {

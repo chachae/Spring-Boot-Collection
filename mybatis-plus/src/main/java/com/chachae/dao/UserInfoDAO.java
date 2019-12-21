@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.chachae.entity.bo.UserInfo;
 import com.chachae.entity.dto.UserInfoDTO;
 import com.chachae.entity.vo.UserInfoVO;
-import org.apache.ibatis.annotations.Param;
 
 /**
  * @author chachae
@@ -21,5 +20,5 @@ public interface UserInfoDAO extends BaseMapper<UserInfo> {
    * @param dto 模糊搜索条件
    * @return 分页包装结果对象
    */
-  IPage<UserInfoVO> selectPageVO(Page<UserInfo> page, @Param("dto") UserInfoDTO dto);
+  IPage<UserInfoVO> selectPageVO(Page<UserInfo> page, UserInfoDTO dto);
 }

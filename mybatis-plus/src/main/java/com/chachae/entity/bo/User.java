@@ -8,7 +8,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 
 /**
@@ -24,7 +23,7 @@ public class User extends Model<User> {
   private Long id;
 
   @NotEmpty(message = "用户名不能为空")
-  @Length(max = 20,message = "长度不能超过20")
+  @Length(max = 20, message = "长度不能超过20")
   private String userName;
 
   private String password;

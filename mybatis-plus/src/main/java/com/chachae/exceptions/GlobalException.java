@@ -3,6 +3,7 @@ package com.chachae.exceptions;
 import com.chachae.bean.REnum;
 import com.chachae.bean.Result;
 import com.chachae.util.DateUtil;
+import com.chachae.util.HttpContextUtil;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindException;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -23,32 +25,34 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalException {
 
-  private static Map<String, Object> errMap = Maps.newHashMap();
+  private Map<String, Object> errMap = Maps.newHashMap();
+  private Date time = DateUtil.nowDate();
 
   @ExceptionHandler(ApiException.class)
-  public Result<Map<String, Object>> apiException(ApiException e, HttpServletRequest request) {
-    errMap = resolveException(e, request);
+  public Result<Map<String, Object>> apiException(ApiException e) {
+    errMap = resolveException(e);
     return Result.fail(errMap, REnum.FAIL.value());
   }
 
   @ExceptionHandler(BindException.class)
-  public Result<Map<String, Object>> bindException(BindException e, HttpServletRequest request) {
-    errMap = resolveException(e, request);
+  public Result<Map<String, Object>> bindException(BindException e) {
+    errMap = resolveException(e);
     return Result.fail(errMap, REnum.FAIL.value());
   }
 
   @ExceptionHandler(Exception.class)
-  public Result<Map<String, Object>> exception(Exception e, HttpServletRequest request) {
-    errMap = resolveException(e, request);
+  public Result<Map<String, Object>> exception(Exception e) {
+    errMap = resolveException(e);
     return Result.fail(errMap, REnum.SERVER_ERROR.value());
   }
 
-  private Map<String, Object> resolveException(Exception e, HttpServletRequest request) {
+  private Map<String, Object> resolveException(Exception e) {
     // 异常信息
     Object msg;
     // 循环索引
     Integer index = 1;
     // 获取触发异常的接口
+    HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
     String uri = request.getRequestURI();
 
     // 处理异常类
@@ -79,10 +83,10 @@ public class GlobalException {
 
     // 输出返回异常日志
     errMap.put("msg", msg);
-    errMap.put("api", request.getRequestURI());
+    errMap.put("api", uri);
     log.error("异常信息：{}", msg);
     log.error("异常接口：{}", uri);
-    log.error("异常时间：{}", DateUtil.now());
+    log.error("异常时间：{}", time);
     log.error("异常类：{}", e.getClass());
     return errMap;
   }

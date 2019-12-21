@@ -9,13 +9,14 @@
             role_id = #{roleId,jdbcType=BIGINT};
     </insert>
 
-    <!-- 维护用户-角色中间表数据【删除】 -->
+    <!-- 维护用户-角色中间表数据【根据用户id 删除】 -->
     <delete id="removeRelation">
         DELETE
         FROM t_user_role
         WHERE user_id = #{userId,jdbcType=BIGINT}
     </delete>
 
+    <!-- 维护用户-角色中间表数据【根据角色id 删除】 -->
     <delete id="removeRelationByRoleId">
         DELETE
         FROM t_user_role

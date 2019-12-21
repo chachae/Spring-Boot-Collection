@@ -2,7 +2,6 @@ package com.chachae.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.chachae.entity.bo.User;
-import org.apache.ibatis.annotations.Param;
 
 /**
  * @author chachae
@@ -14,10 +13,10 @@ public interface UserDAO extends BaseMapper<User> {
    * 新增用户角色中间表数据
    *
    * @param userId 用户id
-   * @param ids 角色id 集合
+   * @param roleId 角色id 集合
    * @return boolean
    */
-  boolean saveRelation(@Param("userId") Long userId, @Param("roleId") Long ids);
+  boolean saveRelation(Long userId, Long roleId);
 
   /**
    * 删除用户角色中间表数据
@@ -25,7 +24,7 @@ public interface UserDAO extends BaseMapper<User> {
    * @param userId 用户id
    * @return boolean
    */
-  boolean removeRelation(@Param("userId") Long userId);
+  boolean removeRelation(Long userId);
 
   /**
    * 删除用户角色中间表数据
@@ -33,5 +32,5 @@ public interface UserDAO extends BaseMapper<User> {
    * @param roleId 角色id
    * @return boolean
    */
-  boolean removeRelationByRoleId(@Param("roleId") Long roleId);
+  boolean removeRelationByRoleId(Long roleId);
 }

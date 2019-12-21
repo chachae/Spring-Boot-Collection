@@ -8,7 +8,7 @@ import com.chachae.entity.dto.DepartmentDTO;
 
 /**
  * @author chachae
- * @date 2019/12/20 14:43
+ * @since 2019/12/20 14:43
  */
 public interface DepartmentService extends IService<Department> {
 

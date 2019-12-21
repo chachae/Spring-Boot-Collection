@@ -36,7 +36,7 @@ public class UserInfo extends Model<UserInfo> {
   private String avatar;
   // QQ号
   @Length(max = 15, message = "QQ号长度不能超过15位")
-  private Integer qqNumber;
+  private String qqNumber;
   // 微信id
   @Length(max = 20, message = "微信号不能超过20位")
   private String wechatId;

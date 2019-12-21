@@ -5,7 +5,7 @@
     <!-- 维护角色-权限中间表数据【新增】 -->
     <insert id="saveRelation">
         INSERT INTO t_role_permission
-        SET role_id = #{roleId,jdbcType=BIGINT},
+        SET role_id       = #{roleId,jdbcType=BIGINT},
             permission_id = #{permissionId,jdbcType=BIGINT};
     </insert>
 

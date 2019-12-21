@@ -1,5 +1,6 @@
 package com.chachae.service.impl;
 
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -40,7 +41,7 @@ public class UserServiceImpl extends ServiceImpl<UserDAO, User> implements UserS
       wrapper.eq("role", dto.getRole());
     }
     Page<User> res = this.userDAO.selectPage(page, wrapper);
-    if (res.getRecords().size() > 0) {
+    if (ObjectUtil.isNotEmpty(res)) {
       // 密码设置空
       res.getRecords().forEach(item -> item.setPassword(null));
     }
@@ -53,7 +54,7 @@ public class UserServiceImpl extends ServiceImpl<UserDAO, User> implements UserS
     boolean res = this.save(entity);
     // 主键
     Long userId = entity.getId();
-    if (res && ids.length > 0) {
+    if (res && ids != null) {
       // 用户角色中间表中增加数据
       for (Long id : ids) {
         this.userDAO.saveRelation(userId, id);
@@ -70,7 +71,7 @@ public class UserServiceImpl extends ServiceImpl<UserDAO, User> implements UserS
   @Transactional(rollbackFor = ApiException.class)
   public boolean updateById(User entity, Long[] ids) {
     boolean res = this.updateById(entity);
-    if (res && ids.length > 0) {
+    if (res && ids != null) {
       Long userId = entity.getId();
       // 删除用户角色中间表中原有的数据再新增
       this.userDAO.removeRelation(userId);
