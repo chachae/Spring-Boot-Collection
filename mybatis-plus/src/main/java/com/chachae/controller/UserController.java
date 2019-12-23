@@ -30,7 +30,7 @@ public class UserController {
    */
   @GetMapping("/list")
   public Result<User> list(Page<User> page, UserDTO dto) {
-    IPage<User> result = this.userService.selectPage(page, dto);
+    IPage<User> result = this.userService.pageVO(page, dto);
     return Result.ok(result);
   }
 

@@ -23,4 +23,11 @@
         WHERE permission_id = #{permissionId,jdbcType=BIGINT}
     </delete>
 
+    <!-- 通过用户id 获取角色信息 -->
+    <select id="selectRoleByUserId" parameterType="long" resultType="Role">
+        SELECT t_role.id, t_role.name, t_role.description
+        FROM t_role
+        LEFT JOIN t_user_role ON t_role.id = t_user_role.role_id
+        WHERE user_id = #{userId,jdbcType=BIGINT}
+    </select>
 </mapper>

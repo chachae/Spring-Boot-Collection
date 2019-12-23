@@ -1,6 +1,7 @@
 package com.chachae.entity.bo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -14,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
  * @date 2019/12/18 13:34
  */
 @TableName(value = "t_role")
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @Data
 public class Role extends Model<Role> {
 
@@ -22,6 +23,7 @@ public class Role extends Model<Role> {
   private Long id;
 
   @NotEmpty(message = "角色名不能为空")
+  @TableField(value = "name")
   private String name;
 
   private String description;

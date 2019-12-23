@@ -30,7 +30,7 @@ public class RoleController {
 
   @GetMapping("/list")
   public Result<Role> list(Page<Role> page, RoleDTO dto) {
-    IPage<Role> result = this.roleService.selectPage(page, dto);
+    IPage<Role> result = this.roleService.pageVO(page, dto);
     return Result.ok(result);
   }
 

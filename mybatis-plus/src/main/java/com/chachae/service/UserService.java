@@ -19,7 +19,7 @@ public interface UserService extends IService<User> {
    * @param dto 模糊搜索条件
    * @return IPage对象
    */
-  IPage<User> selectPage(Page<User> page, UserDTO dto);
+  IPage<User> pageVO(Page<User> page, UserDTO dto);
 
   /**
    * 新增用户

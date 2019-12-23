@@ -20,5 +20,13 @@ public interface UserInfoService extends IService<UserInfo> {
    * @param dto 模糊搜索条件
    * @return IPage对象
    */
-  IPage<UserInfoVO> selectPageVO(Page<UserInfo> page, UserInfoDTO dto);
+  IPage<UserInfoVO> pageVO(Page<UserInfo> page, UserInfoDTO dto);
+
+  /**
+   * 通过用户名查询用户详细信息
+   *
+   * @param userName 用户名
+   * @return 用户详细信息
+   */
+  UserInfoVO getVoByUserName(String userName);
 }

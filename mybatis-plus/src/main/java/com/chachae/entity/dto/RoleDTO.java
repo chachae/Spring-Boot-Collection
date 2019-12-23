@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
  * @author chachae
  * @date 2019/12/19 13:48
  */
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @Data
 public class RoleDTO extends Model<RoleDTO> {
 

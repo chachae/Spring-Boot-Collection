@@ -3,6 +3,8 @@ package com.chachae.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.chachae.entity.bo.Role;
 
+import java.util.List;
+
 /**
  * @author chachae
  * @date 2019/12/19 13:39
@@ -33,4 +35,12 @@ public interface RoleDAO extends BaseMapper<Role> {
    * @return boolean
    */
   boolean removeRelationByPermissionId(Long permissionId);
+
+  /**
+   * 通过用户id 查询该用户的全部角色
+   *
+   * @param userId 用户id
+   * @return 角色列表
+   */
+  List<Role> selectRoleByUserId(Long userId);
 }

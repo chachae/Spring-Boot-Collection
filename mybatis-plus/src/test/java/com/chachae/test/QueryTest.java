@@ -63,7 +63,7 @@ public class QueryTest {
   public void test4() {
     Page<User> page = new Page<>(1, 3);
     UserDTO dto = new UserDTO();
-    IPage<User> info = this.userService.selectPage(page, dto);
+    IPage<User> info = this.userService.pageVO(page, dto);
     Console.log("当前页：{}", info.getCurrent());
     Console.log("总页数：{}", info.getPages());
     Console.log("总数据：{}", info.getTotal());

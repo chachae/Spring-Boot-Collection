@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * @author chachae
@@ -31,17 +32,14 @@ public class UserServiceImpl extends ServiceImpl<UserDAO, User> implements UserS
   @Resource private UserInfoDAO userInfoDAO;
 
   @Override
-  public IPage<User> selectPage(Page<User> page, UserDTO dto) {
+  public IPage<User> pageVO(Page<User> page, UserDTO dto) {
     // 模糊条件构造
     QueryWrapper<User> wrapper = new QueryWrapper<>();
     if (StrUtil.isNotEmpty(dto.getKeyword())) {
-      wrapper.like("user_name", dto.getKeyword());
-    }
-    if (dto.getRole() != null) {
-      wrapper.eq("role", dto.getRole());
+      wrapper.lambda().like(User::getUserName, dto.getKeyword());
     }
     Page<User> res = this.userDAO.selectPage(page, wrapper);
-    if (ObjectUtil.isNotEmpty(res)) {
+    if (ObjectUtil.isNotEmpty(res.getRecords())) {
       // 密码设置空
       res.getRecords().forEach(item -> item.setPassword(null));
     }
@@ -56,13 +54,11 @@ public class UserServiceImpl extends ServiceImpl<UserDAO, User> implements UserS
     Long userId = entity.getId();
     if (res && ids != null) {
       // 用户角色中间表中增加数据
-      for (Long id : ids) {
-        this.userDAO.saveRelation(userId, id);
-      }
+      Arrays.stream(ids).forEach(id -> this.userDAO.saveRelation(userId, id));
     }
     // 用户信息表中插入数据
     UserInfo info = new UserInfo();
-    info.setAdmin(Boolean.FALSE).setId(userId).setCreateTime(DateUtil.nowDate());
+    info.setId(userId).setCreateTime(DateUtil.nowDate());
     this.userInfoDAO.insert(info);
     return res;
   }
@@ -75,9 +71,7 @@ public class UserServiceImpl extends ServiceImpl<UserDAO, User> implements UserS
       Long userId = entity.getId();
       // 删除用户角色中间表中原有的数据再新增
       this.userDAO.removeRelation(userId);
-      for (Long id : ids) {
-        this.userDAO.saveRelation(userId, id);
-      }
+      Arrays.stream(ids).forEach(id -> this.userDAO.saveRelation(userId, id));
     }
     return res;
   }
@@ -89,7 +83,7 @@ public class UserServiceImpl extends ServiceImpl<UserDAO, User> implements UserS
     if (res) {
       this.userDAO.removeRelation((Long) id);
       QueryWrapper<UserInfo> qw = new QueryWrapper<>();
-      qw.eq("id", id);
+      qw.lambda().eq(UserInfo::getId, id);
       this.userInfoDAO.delete(qw);
     }
     return res;

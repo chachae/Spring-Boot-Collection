@@ -30,7 +30,7 @@ public class PermissionController {
 
   @GetMapping("/list")
   public Result<Permission> list(Page<Permission> page, PermissionDTO dto) {
-    IPage<Permission> result = this.permissionService.selectPage(page, dto);
+    IPage<Permission> result = this.permissionService.pageVO(page, dto);
     return Result.ok(result);
   }
 

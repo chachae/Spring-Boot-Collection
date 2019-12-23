@@ -21,4 +21,12 @@ public interface UserInfoDAO extends BaseMapper<UserInfo> {
    * @return 分页包装结果对象
    */
   IPage<UserInfoVO> selectPageVO(Page<UserInfo> page, UserInfoDTO dto);
+
+  /**
+   * 通过用户名查询用户信息
+   *
+   * @param userName 用户名
+   * @return 用户详细信息
+   */
+  UserInfoVO selectVoByUserName(String userName);
 }

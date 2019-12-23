@@ -7,10 +7,7 @@ import com.chachae.entity.bo.UserInfo;
 import com.chachae.entity.dto.UserInfoDTO;
 import com.chachae.entity.vo.UserInfoVO;
 import com.chachae.service.UserInfoService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -34,8 +31,14 @@ public class UserInfoController {
    */
   @GetMapping("/list")
   public Result<UserInfoVO> list(Page<UserInfo> page, UserInfoDTO dto) {
-    IPage<UserInfoVO> result = this.userInfoService.selectPageVO(page, dto);
+    IPage<UserInfoVO> result = this.userInfoService.pageVO(page, dto);
     return Result.ok(result);
+  }
+
+  @GetMapping("/{userName}")
+  public Result<UserInfoVO> userInfo(@PathVariable String userName) {
+    UserInfoVO vo = this.userInfoService.getVoByUserName(userName);
+    return Result.ok(vo);
   }
 
   @PutMapping("/update")

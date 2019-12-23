@@ -29,7 +29,7 @@ public class DepartmentController {
 
   @GetMapping("/list")
   public Result<Department> list(Page<Department> page, DepartmentDTO dto) {
-    IPage<Department> result = this.departmentService.selectPage(page, dto);
+    IPage<Department> result = this.departmentService.pageVO(page, dto);
     return Result.ok(result);
   }
 

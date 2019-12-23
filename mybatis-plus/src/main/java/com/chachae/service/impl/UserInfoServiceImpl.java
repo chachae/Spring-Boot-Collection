@@ -1,5 +1,6 @@
 package com.chachae.service.impl;
 
+import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.chachae.bean.Page;
@@ -10,13 +11,10 @@ import com.chachae.entity.vo.UserInfoVO;
 import com.chachae.exceptions.ApiException;
 import com.chachae.service.UserInfoService;
 import com.chachae.util.DateUtil;
-import com.chachae.util.HttpContextUtil;
-import com.chachae.util.IPUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author chachae
@@ -29,7 +27,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoDAO, UserInfo>
   @Resource private UserInfoDAO userInfoDAO;
 
   @Override
-  public IPage<UserInfoVO> selectPageVO(Page<UserInfo> page, UserInfoDTO dto) {
+  public IPage<UserInfoVO> pageVO(Page<UserInfo> page, UserInfoDTO dto) {
     return this.userInfoDAO.selectPageVO(page, dto);
   }
 
@@ -38,10 +36,13 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoDAO, UserInfo>
   public boolean updateById(UserInfo entity) {
     // 设置更新时间
     entity.setUpdateTime(DateUtil.nowDate());
-    // 设置IP
-    HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
-    String ip = IPUtil.getIpAddr(request);
-    entity.setLoginIp(ip);
     return super.updateById(entity);
+  }
+
+  @Override
+  public UserInfoVO getVoByUserName(String userName) {
+    UserInfoVO vo = this.userInfoDAO.selectVoByUserName(userName);
+    boolean res = ObjectUtil.isNotEmpty(vo);
+    return res ? vo : UserInfoVO.builder().build();
   }
 }

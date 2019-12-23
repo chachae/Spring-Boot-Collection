@@ -30,10 +30,10 @@ public class DepartmentServiceImpl extends ServiceImpl<DepartmentDAO, Department
   @Resource private UserInfoDAO userInfoDAO;
 
   @Override
-  public IPage<Department> selectPage(Page<Department> page, DepartmentDTO dto) {
+  public IPage<Department> pageVO(Page<Department> page, DepartmentDTO dto) {
     QueryWrapper<Department> qw = new QueryWrapper<>();
     if (StrUtil.isNotEmpty(dto.getKeyword())) {
-      qw.like("department_name", dto.getKeyword());
+      qw.lambda().like(Department::getName, dto.getKeyword());
     }
     return this.departmentDAO.selectPage(page, qw);
   }
@@ -43,12 +43,11 @@ public class DepartmentServiceImpl extends ServiceImpl<DepartmentDAO, Department
   public boolean removeById(Serializable id) {
     // 查询是否有存在于该部门的员工
     QueryWrapper<UserInfo> qw = new QueryWrapper<>();
-    qw.eq("department_id", id);
+    qw.lambda().eq(UserInfo::getDepartmentId, id);
     Integer count = this.userInfoDAO.selectCount(qw);
-    if (count.equals(0)) {
-      return super.removeById(id);
-    } else {
+    if (!count.equals(0)) {
       throw ApiException.argError("部门中存在员工，不允许删除！");
     }
+    return super.removeById(id);
   }
 }

@@ -19,5 +19,5 @@ public interface DepartmentService extends IService<Department> {
    * @param dto 模糊搜索条件
    * @return IPage对象
    */
-  IPage<Department> selectPage(Page<Department> page, DepartmentDTO dto);
+  IPage<Department> pageVO(Page<Department> page, DepartmentDTO dto);
 }

@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.chachae.entity.bo.Role;
 import com.chachae.entity.dto.RoleDTO;
 
+import java.util.Set;
+
 /**
  * @author chachae
  * @date 2019/12/19 13:40
@@ -19,7 +21,7 @@ public interface RoleService extends IService<Role> {
    * @param dto 模糊搜索条件
    * @return IPage对象
    */
-  IPage<Role> selectPage(Page<Role> page, RoleDTO dto);
+  IPage<Role> pageVO(Page<Role> page, RoleDTO dto);
 
   /**
    * 新增角色
@@ -38,4 +40,12 @@ public interface RoleService extends IService<Role> {
    * @return boolean
    */
   boolean updateById(Role role, Long[] ids);
+
+  /**
+   * 获取用户角色ID
+   *
+   * @param userId 用户id
+   * @return 用户角色id
+   */
+  Set<String> getRoleByUserId(Long userId);
 }

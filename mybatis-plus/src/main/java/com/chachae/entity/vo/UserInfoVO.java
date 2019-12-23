@@ -1,17 +1,22 @@
 package com.chachae.entity.vo;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import com.chachae.entity.bo.Department;
+import com.chachae.entity.bo.Role;
+import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author chachae
  * @date 2019/12/20 11:21
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class UserInfoVO extends Model<UserInfoVO> {
 
   // 用户id
@@ -26,12 +31,10 @@ public class UserInfoVO extends Model<UserInfoVO> {
   private Boolean admin;
   // 性别
   private Integer gender;
-  // 部门id
-  private Integer departmentId;
   // 头像地址
   private String avatar;
   // QQ号
-  private Integer qqNumber;
+  private String qqNumber;
   // 微信id
   private String wechatId;
   // 个人主页
@@ -46,4 +49,8 @@ public class UserInfoVO extends Model<UserInfoVO> {
   private Date loginTime;
   // 登录IP
   private String loginIp;
+  // 部门信息
+  private Department department;
+  // 角色信息
+  private List<Role> roles;
 }
