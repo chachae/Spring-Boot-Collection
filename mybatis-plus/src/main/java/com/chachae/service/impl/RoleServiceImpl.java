@@ -80,9 +80,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleDAO, Role> implements RoleS
     List<Role> roles = this.roleDAO.selectRoleByUserId(userId);
     Set<String> set = Sets.newHashSet();
     if (ObjectUtil.isNotEmpty(roles)) {
-      for (Role role : roles) {
-        set.add(String.valueOf(role.getId()));
-      }
+      roles.forEach(role -> set.add(String.valueOf(role.getId())));
     }
     return set;
   }

@@ -22,7 +22,7 @@ import java.util.Map;
  * @date 2019/12/19 19:13
  */
 @Slf4j
-// @RestControllerAdvice
+@RestControllerAdvice
 public class GlobalException {
 
   private Map<String, Object> errMap = Maps.newHashMap();

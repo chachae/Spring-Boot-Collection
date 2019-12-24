@@ -10,7 +10,7 @@
     </appender>
     <!--全局日志等级-->
     <!-- 1. 上线后请将此处的日志等级修改为：ERROR 2. 开发或者本地部署测试：DEBUG / INFO -->
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>

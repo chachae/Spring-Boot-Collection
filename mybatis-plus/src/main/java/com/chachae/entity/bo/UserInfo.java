@@ -1,6 +1,8 @@
 package com.chachae.entity.bo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
@@ -9,7 +11,7 @@ import lombok.experimental.Accessors;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -23,7 +25,8 @@ import java.util.Date;
 public class UserInfo extends Model<UserInfo> {
 
   // id
-  @NotEmpty(message = "id 不能为空")
+  @NotNull(message = "id 不能为空")
+  @TableId(type = IdType.INPUT)
   private Long id;
   // 邮箱地址
   @Email(message = "邮箱地址不合法")
