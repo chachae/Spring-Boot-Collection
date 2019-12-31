@@ -9,6 +9,7 @@ import com.chachae.entity.bo.User;
 import com.chachae.entity.bo.UserInfo;
 import com.chachae.entity.dto.LoginDTO;
 import com.chachae.exceptions.ApiException;
+import com.chachae.service.CaptchaService;
 import com.chachae.service.LoginService;
 import com.chachae.util.DateUtil;
 import com.chachae.util.HttpContextUtil;
@@ -29,10 +30,14 @@ public class LoginServiceImpl extends ServiceImpl<UserDAO, User> implements Logi
 
   @Resource private UserDAO userDAO;
   @Resource private UserInfoDAO userInfoDAO;
+  @Resource private CaptchaService captchaService;
 
   @Override
   @Transactional(rollbackFor = ApiException.class)
   public User getUserByLoginDTO(LoginDTO dto) {
+    if (!this.captchaService.verify(dto.getCaptcha())) {
+      throw ApiException.argError("验证码错误");
+    }
     QueryWrapper<User> qw = new QueryWrapper<>();
     qw.lambda().eq(User::getUserName, dto.getUserName()).eq(User::getPassword, dto.getPassword());
     User user = this.userDAO.selectOne(qw);

@@ -1,12 +1,15 @@
 package com.chachae.controller;
 
+import com.chachae.Constants.SysConsts;
 import com.chachae.bean.Result;
 import com.chachae.entity.bo.User;
 import com.chachae.entity.dto.LoginDTO;
 import com.chachae.exceptions.ApiException;
+import com.chachae.service.CaptchaService;
 import com.chachae.service.LoginService;
 import com.chachae.service.PermissionService;
 import com.chachae.service.RoleService;
+import com.chachae.util.HttpContextUtil;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -22,8 +25,9 @@ import java.util.Set;
 public class TestController {
 
   @Resource private LoginService loginService;
-  @Resource RoleService roleService;
+  @Resource private RoleService roleService;
   @Resource private PermissionService permissionService;
+  @Resource private CaptchaService captchaService;
 
   @GetMapping("/exception")
   public void exception(String args) {
@@ -56,5 +60,12 @@ public class TestController {
   public Result<Set<String>> getRoleByUserId(@PathVariable Long userId) {
     Set<String> set = this.roleService.getRoleByUserId(userId);
     return Result.ok(set);
+  }
+
+  @GetMapping("/captcha")
+  public Result<String> captcha() {
+    this.captchaService.getCaptcha();
+    Object obj = HttpContextUtil.getSession(SysConsts.CAPTCHA);
+    return Result.ok(obj.toString());
   }
 }

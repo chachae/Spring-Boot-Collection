@@ -1,7 +1,5 @@
 package com.chachae.entity.dto;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,15 +13,16 @@ import javax.validation.constraints.NotEmpty;
  */
 @EqualsAndHashCode(callSuper = false)
 @Data
-@TableName(value = "t_user")
 public class LoginDTO extends Model<LoginDTO> {
 
   @NotEmpty(message = "用户名不能为空")
   @Length(max = 20, message = "长度不能超过20")
-  @TableField("user_name")
   private String userName;
 
   @NotEmpty(message = "密码不能为空")
-  @TableField("password")
   private String password;
+
+  @Length(min = 4, max = 4, message = "验证码长度异常")
+  @NotEmpty(message = "验证码不能为空")
+  private String captcha;
 }
