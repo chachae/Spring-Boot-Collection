@@ -1,7 +1,6 @@
-package com.chachae.entity.bo;
+package com.chachae.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -29,10 +28,8 @@ public class Department extends Model<Department> {
 
   @NotNull
   @Length(max = 20, message = "长度不能超过15个字")
-  @TableField(value = "name")
   private String name;
 
   @Length(max = 20, message = "部门简介不能超过20个字")
-  @TableField(value = "description")
   private String description;
 }

@@ -1,4 +1,4 @@
-package com.chachae.entity.bo;
+package com.chachae.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -23,11 +23,14 @@ import java.util.Date;
 @Data
 @TableName(value = "t_user_info")
 public class UserInfo extends Model<UserInfo> {
-
   // id
   @NotNull(message = "id 不能为空")
   @TableId(type = IdType.INPUT)
   private Long id;
+  // 真实姓名
+  @Length(max = 50, message = "真实姓名过长")
+  @TableField("full_name")
+  private String fullName;
   // 邮箱地址
   @Email(message = "邮箱地址不合法")
   private String email;
@@ -43,9 +46,11 @@ public class UserInfo extends Model<UserInfo> {
   private String avatar;
   // QQ号
   @Length(max = 15, message = "QQ号长度不能超过15位")
+  @TableField(value = "qq_number")
   private String qqNumber;
   // 微信id
   @Length(max = 20, message = "微信号不能超过20位")
+  @TableField(value = "wechat_id")
   private String wechatId;
   // 个人主页
   @Length(max = 50, message = "个人主页不能超过25位")

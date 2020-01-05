@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.chachae.dao.PermissionDAO;
 import com.chachae.dao.RoleDAO;
-import com.chachae.entity.bo.Permission;
+import com.chachae.entity.Permission;
 import com.chachae.entity.dto.PermissionDTO;
 import com.chachae.exceptions.ApiException;
 import com.chachae.service.PermissionService;

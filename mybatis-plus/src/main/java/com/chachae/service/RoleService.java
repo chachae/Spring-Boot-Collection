@@ -3,7 +3,7 @@ package com.chachae.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.chachae.entity.bo.Role;
+import com.chachae.entity.Role;
 import com.chachae.entity.dto.RoleDTO;
 
 import java.util.Set;

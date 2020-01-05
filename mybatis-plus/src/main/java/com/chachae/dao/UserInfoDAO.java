@@ -3,7 +3,7 @@ package com.chachae.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.chachae.entity.bo.UserInfo;
+import com.chachae.entity.UserInfo;
 import com.chachae.entity.dto.UserInfoDTO;
 import com.chachae.entity.vo.UserInfoVO;
 

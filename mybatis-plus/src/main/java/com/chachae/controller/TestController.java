@@ -2,7 +2,7 @@ package com.chachae.controller;
 
 import com.chachae.Constants.SysConsts;
 import com.chachae.bean.Result;
-import com.chachae.entity.bo.User;
+import com.chachae.entity.User;
 import com.chachae.entity.dto.LoginDTO;
 import com.chachae.exceptions.ApiException;
 import com.chachae.service.CaptchaService;
@@ -10,10 +10,12 @@ import com.chachae.service.LoginService;
 import com.chachae.service.PermissionService;
 import com.chachae.service.RoleService;
 import com.chachae.util.HttpContextUtil;
+import com.google.common.collect.Maps;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -40,6 +42,9 @@ public class TestController {
 
   @PostMapping("/login")
   public Result<User> login(@Valid LoginDTO dto) {
+    if (!this.captchaService.verify(dto.getCaptcha())) {
+      throw ApiException.argError("验证码错误");
+    }
     User user = this.loginService.getUserByLoginDTO(dto);
     return Result.ok(user);
   }
@@ -63,9 +68,12 @@ public class TestController {
   }
 
   @GetMapping("/captcha")
-  public Result<String> captcha() {
-    this.captchaService.getCaptcha();
+  public Result<Map<String, String>> captcha() {
+    String captcha = this.captchaService.getCaptcha();
     Object obj = HttpContextUtil.getSession(SysConsts.CAPTCHA);
-    return Result.ok(obj.toString());
+    Map<String, String> map = Maps.newHashMap();
+    map.put("base64", captcha);
+    map.put("text", obj.toString());
+    return Result.ok(map);
   }
 }

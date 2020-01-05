@@ -1,4 +1,4 @@
-package com.chachae.entity.bo;
+package com.chachae.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -30,11 +30,13 @@ public class User extends Model<User> {
   @TableField(value = "user_name")
   private String userName;
 
-  @TableField(value = "password")
   @NotEmpty(message = "密码不能为空")
   private String password;
 
   // 是否为管理员
   @NotEmpty(message = "是否为管理员不能为空")
   private Boolean admin;
+
+  // 状态
+  private Boolean status;
 }

@@ -1,8 +1,8 @@
 package com.chachae.entity.vo;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.chachae.entity.bo.Department;
-import com.chachae.entity.bo.Role;
+import com.chachae.entity.Department;
+import com.chachae.entity.Role;
 import lombok.*;
 
 import java.util.Date;
@@ -23,6 +23,10 @@ public class UserInfoVO extends Model<UserInfoVO> {
   private Long id;
   // 用户名
   private String userName;
+  // 帐号状态
+  private Boolean status;
+  // 真实姓名
+  private String fullName;
   // 邮箱地址
   private String email;
   // 手机号码

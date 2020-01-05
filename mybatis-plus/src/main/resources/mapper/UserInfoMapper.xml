@@ -4,7 +4,9 @@
 <mapper namespace="com.chachae.dao.UserInfoDAO">
     <resultMap id="baseMap" type="UserInfoVO">
         <id column="id" property="id"/>
+        <id column="status" property="status"/>
         <result column="user_name" property="userName"/>
+        <result column="full_name" property="fullName"/>
         <result column="email" property="email"/>
         <result column="mobile" property="mobile"/>
         <result column="admin" property="admin"/>
@@ -22,15 +24,30 @@
             <id column="id" property="id"/>
             <result column="name" property="name"/>
         </association>
-        <collection property="roles" ofType="com.chachae.entity.bo.Role"
+        <collection property="roles" ofType="com.chachae.entity.Role"
                     select="com.chachae.dao.RoleDAO.selectRoleByUserId" column="id">
         </collection>
     </resultMap>
     <sql id="baseQuerySql">
-        SELECT t_user_info.id,t_user.user_name,t_user_info.email,t_user_info.mobile,t_user.admin,
-               t_user_info.gender,t_user_info.avatar,t_user_info.qq_number,t_user_info.wechat_id,
-               t_user_info.site,t_user_info.description,t_user_info.create_time,t_user_info.update_time,
-               t_user_info.login_time,t_user_info.login_ip,t_user_info.department_id d_id,t_department.name d_name
+        SELECT t_user_info.id,
+               t_user.user_name,
+               t_user_info.full_name,
+               t_user_info.email,
+               t_user_info.mobile,
+               t_user.admin,
+               t_user.status,
+               t_user_info.gender,
+               t_user_info.avatar,
+               t_user_info.qq_number,
+               t_user_info.wechat_id,
+               t_user_info.site,
+               t_user_info.description,
+               t_user_info.create_time,
+               t_user_info.update_time,
+               t_user_info.login_time,
+               t_user_info.login_ip,
+               t_user_info.department_id d_id,
+               t_department.name         d_name
         FROM t_user_info
                  LEFT JOIN t_user ON t_user_info.id = t_user.id
                  LEFT JOIN t_department ON t_user_info.department_id = t_department.id
@@ -45,11 +62,10 @@
                 AND t_user_info.gender = #{dto.gender,jdbcType=INTEGER}
             </if>
             <if test="dto.keyword != null and dto.keyword != ''">
-                AND t_user.user_name LIKE CONCAT( '%', #{dto.keyword,jdbcType=VARCHAR},'%')
+                AND t_user_info.full_name LIKE CONCAT( '%', #{dto.keyword,jdbcType=VARCHAR},'%')
             </if>
         </where>
     </select>
-
     <select id="selectVoByUserName" resultMap="baseMap">
         <include refid="baseQuerySql"/>
         WHERE user_name = #{username,jdbcType=VARCHAR}

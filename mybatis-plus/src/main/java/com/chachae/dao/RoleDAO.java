@@ -1,7 +1,7 @@
 package com.chachae.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.chachae.entity.bo.Role;
+import com.chachae.entity.Role;
 
 import java.util.List;
 

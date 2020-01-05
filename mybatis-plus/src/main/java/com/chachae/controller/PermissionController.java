@@ -3,7 +3,7 @@ package com.chachae.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.chachae.bean.Page;
 import com.chachae.bean.Result;
-import com.chachae.entity.bo.Permission;
+import com.chachae.entity.Permission;
 import com.chachae.entity.dto.PermissionDTO;
 import com.chachae.service.PermissionService;
 import org.springframework.web.bind.annotation.*;

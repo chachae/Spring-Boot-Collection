@@ -1,8 +1,6 @@
 package com.chachae.entity.dto;
 
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
@@ -11,9 +9,8 @@ import javax.validation.constraints.NotEmpty;
  * @author chachae
  * @since 2019/12/21 12:03
  */
-@EqualsAndHashCode(callSuper = false)
 @Data
-public class LoginDTO extends Model<LoginDTO> {
+public class LoginDTO {
 
   @NotEmpty(message = "用户名不能为空")
   @Length(max = 20, message = "长度不能超过20")

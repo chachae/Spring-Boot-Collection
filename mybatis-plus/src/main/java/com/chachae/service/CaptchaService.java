@@ -19,5 +19,5 @@ public interface CaptchaService {
    * @param text 前端传过来的验证码
    * @return boolean
    */
-  Boolean verify(String text);
+  boolean verify(String text);
 }

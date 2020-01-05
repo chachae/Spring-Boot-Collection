@@ -8,8 +8,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.chachae.dao.UserDAO;
 import com.chachae.dao.UserInfoDAO;
-import com.chachae.entity.bo.User;
-import com.chachae.entity.bo.UserInfo;
+import com.chachae.entity.User;
+import com.chachae.entity.UserInfo;
 import com.chachae.entity.dto.UserDTO;
 import com.chachae.exceptions.ApiException;
 import com.chachae.service.UserService;
@@ -49,6 +49,8 @@ public class UserServiceImpl extends ServiceImpl<UserDAO, User> implements UserS
   @Override
   @Transactional(rollbackFor = ApiException.class)
   public boolean save(User entity, Long[] ids) {
+    // 用户账号默认不锁定
+    entity.setStatus(Boolean.TRUE);
     boolean res = this.save(entity);
     // 主键
     Long userId = entity.getId();
@@ -57,8 +59,7 @@ public class UserServiceImpl extends ServiceImpl<UserDAO, User> implements UserS
       Arrays.stream(ids).forEach(id -> this.userDAO.saveRelation(userId, id));
     }
     // 用户信息表中插入数据
-    UserInfo info = new UserInfo();
-    info.setId(userId).setCreateTime(DateUtil.nowDate());
+    UserInfo info = new UserInfo().setId(userId).setCreateTime(DateUtil.nowDate());
     this.userInfoDAO.insert(info);
     return res;
   }

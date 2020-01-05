@@ -3,7 +3,7 @@ package com.chachae.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.chachae.bean.Page;
 import com.chachae.bean.Result;
-import com.chachae.entity.bo.UserInfo;
+import com.chachae.entity.UserInfo;
 import com.chachae.entity.dto.UserInfoDTO;
 import com.chachae.entity.vo.UserInfoVO;
 import com.chachae.service.UserInfoService;

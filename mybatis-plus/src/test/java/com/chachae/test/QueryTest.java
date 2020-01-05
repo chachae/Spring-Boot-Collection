@@ -5,7 +5,7 @@ import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.chachae.entity.bo.User;
+import com.chachae.entity.User;
 import com.chachae.entity.dto.UserDTO;
 import com.chachae.service.UserService;
 import com.google.common.collect.Maps;

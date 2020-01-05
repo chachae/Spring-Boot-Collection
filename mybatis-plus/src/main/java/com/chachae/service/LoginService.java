@@ -1,7 +1,7 @@
 package com.chachae.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.chachae.entity.bo.User;
+import com.chachae.entity.User;
 import com.chachae.entity.dto.LoginDTO;
 
 /**

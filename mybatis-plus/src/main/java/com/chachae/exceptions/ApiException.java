@@ -8,7 +8,7 @@ import lombok.*;
  */
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @Data
 @Builder
 public class ApiException extends RuntimeException {

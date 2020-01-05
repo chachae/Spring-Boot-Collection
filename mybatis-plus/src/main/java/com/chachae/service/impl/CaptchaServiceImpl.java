@@ -28,7 +28,7 @@ public class CaptchaServiceImpl implements CaptchaService {
   }
 
   @Override
-  public Boolean verify(String text) {
+  public boolean verify(String text) {
     try {
       Object obj = HttpContextUtil.getSession(SysConsts.CAPTCHA);
       HttpContextUtil.removeSession(SysConsts.CAPTCHA);

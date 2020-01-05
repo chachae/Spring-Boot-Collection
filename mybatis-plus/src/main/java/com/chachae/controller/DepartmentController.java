@@ -3,7 +3,7 @@ package com.chachae.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.chachae.bean.Page;
 import com.chachae.bean.Result;
-import com.chachae.entity.bo.Department;
+import com.chachae.entity.Department;
 import com.chachae.entity.dto.DepartmentDTO;
 import com.chachae.service.DepartmentService;
 import org.springframework.web.bind.annotation.*;

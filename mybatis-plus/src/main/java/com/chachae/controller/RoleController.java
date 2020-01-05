@@ -3,7 +3,7 @@ package com.chachae.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.chachae.bean.Page;
 import com.chachae.bean.Result;
-import com.chachae.entity.bo.Role;
+import com.chachae.entity.Role;
 import com.chachae.entity.dto.RoleDTO;
 import com.chachae.service.RoleService;
 import org.springframework.web.bind.annotation.*;

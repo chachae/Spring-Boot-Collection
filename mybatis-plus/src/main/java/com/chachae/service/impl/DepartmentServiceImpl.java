@@ -7,8 +7,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.chachae.dao.DepartmentDAO;
 import com.chachae.dao.UserInfoDAO;
-import com.chachae.entity.bo.Department;
-import com.chachae.entity.bo.UserInfo;
+import com.chachae.entity.Department;
+import com.chachae.entity.UserInfo;
 import com.chachae.entity.dto.DepartmentDTO;
 import com.chachae.exceptions.ApiException;
 import com.chachae.service.DepartmentService;
@@ -45,8 +45,8 @@ public class DepartmentServiceImpl extends ServiceImpl<DepartmentDAO, Department
     QueryWrapper<UserInfo> qw = new QueryWrapper<>();
     qw.lambda().eq(UserInfo::getDepartmentId, id);
     Integer count = this.userInfoDAO.selectCount(qw);
-    if (!count.equals(0)) {
-      throw ApiException.argError("部门中存在员工，不允许删除！");
+    if (count > 0) {
+      throw ApiException.argError("部门中存在员工，不允许删除");
     }
     return super.removeById(id);
   }

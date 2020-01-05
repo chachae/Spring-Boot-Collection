@@ -1,7 +1,7 @@
 package com.chachae.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.chachae.entity.bo.User;
+import com.chachae.entity.User;
 
 /**
  * @author chachae

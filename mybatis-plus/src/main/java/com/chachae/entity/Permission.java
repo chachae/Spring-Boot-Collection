@@ -1,30 +1,27 @@
-package com.chachae.entity.bo;
+package com.chachae.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Length;
 
 /**
  * @author chachae
- * @date 2019/12/18 13:34
+ * @date 2019/12/19 21:11
  */
-@TableName(value = "t_role")
+@TableName(value = "t_permission")
 @EqualsAndHashCode(callSuper = false)
 @Data
-public class Role extends Model<Role> {
+public class Permission extends Model<Permission> {
 
   @TableId(type = IdType.AUTO)
-  private Long id;
+  private Integer id;
 
-  @NotEmpty(message = "角色名不能为空")
-  @TableField(value = "name")
+  @Length(max = 20, message = "部门名称不能超过10个字")
   private String name;
 
-  private String description;
+  private String expression;
 }
