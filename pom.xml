@@ -13,6 +13,7 @@
         <module>simple-crud</module>
         <module>mybatis-plus</module>
         <module>springboot-study</module>
+        <module>java-api</module>
     </modules>
     <dependencies>
         <dependency>
