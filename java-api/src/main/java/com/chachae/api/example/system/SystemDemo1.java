@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @author chachae
  * @since 2020/1/5 22:55
  */
-public class SystemDemo {
+public class SystemDemo1 {
 
   @Test
   public void test() {
