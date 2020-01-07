@@ -1,6 +1,6 @@
 package com.chachae.api.example.string;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 1：遍历字符串(获取字符串中的每一个字符) <br>

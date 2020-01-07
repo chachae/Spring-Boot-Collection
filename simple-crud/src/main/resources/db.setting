@@ -1,3 +1,0 @@
-url = jdbc:mysql://localhost:3306/jwt?useSSL=false
-user = root
-pass = 123456

@@ -1,6 +1,6 @@
 package com.chachae.api.example.system;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
