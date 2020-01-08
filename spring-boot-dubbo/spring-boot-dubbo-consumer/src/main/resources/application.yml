@@ -1,0 +1,9 @@
+server:
+  port: 9098
+
+dubbo:
+  registry:
+    # z这里有个坑，非本地ip 请将ip 绑定到本地host 中再使用，否则dubbo 连接不上zk
+    address: zookeeper://vm.cn:2181
+  application:
+    name: spring-boot-demo-dubbo-consumer

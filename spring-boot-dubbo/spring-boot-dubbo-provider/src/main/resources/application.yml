@@ -1,0 +1,10 @@
+server:
+  port: 9099
+
+dubbo:
+  registry:
+    address: zookeeper://vm.cn:2181
+  application:
+    name: spring-boot-demo-dubbo-provider
+  scan:
+    base-packages: com.chachae.dubbo.provider.service
