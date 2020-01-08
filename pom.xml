@@ -20,7 +20,8 @@
         <module>java-api</module>
         <module>spring-boot-jpa</module>
         <module>spring-boot-async</module>
-        <module>springb-boot-redis</module>
+        <module>spring-boot-redis</module>
+        <module>spring-boot-actuator</module>
     </modules>
 
     <!-- 依赖版本管理 -->
