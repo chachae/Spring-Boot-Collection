@@ -18,17 +18,18 @@
     <modules>
         <module>spring-boot-mybatis-plus</module>
         <module>java-api</module>
+        <module>spring-boot-jpa</module>
     </modules>
 
+    <!-- 依赖版本管理 -->
     <properties>
-        <junit.version>4.12</junit.version>
-        <slf4j.version>1.7.26</slf4j.version>
         <mysql.version>5.1.48</mysql.version>
         <guava.version>28.1-jre</guava.version>
-        <hutool.version>5.0.7</hutool.version>
+        <hutool.version>5.1.0</hutool.version>
         <hibernate.validator.version>6.1.0.Final</hibernate.validator.version>
     </properties>
 
+    <!-- 统一依赖管理 -->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -75,7 +76,13 @@
         </dependencies>
     </dependencyManagement>
 
+    <!-- 父工程默认依赖 -->
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
@@ -92,16 +99,6 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
         </dependency>
 
         <dependency>

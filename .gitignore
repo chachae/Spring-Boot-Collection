@@ -3,6 +3,4 @@
 *.iml
 out
 gen
-SE/io/
-spring/src/test/
-spring/target/
+*/target

@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql:///jwt?useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      auto-commit: true
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      connection-test-query: SELECT 1
+      minimum-idle: 10
+      maximum-pool-size: 10
+      read-only: false
+  # JPA Configuration
+  jpa:
+    database: mysql
+# server configuration
+server:
+  port: 8066
+  servlet:
+    context-path: /api/v1/
