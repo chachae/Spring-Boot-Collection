@@ -19,6 +19,7 @@
         <module>spring-boot-mybatis-plus</module>
         <module>java-api</module>
         <module>spring-boot-jpa</module>
+        <module>spring-boot-async</module>
     </modules>
 
     <!-- 依赖版本管理 -->
