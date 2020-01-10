@@ -1,0 +1,8 @@
+*.js linguist-language=Java
+*.css linguist-language=Java
+*.html linguist-language=Java
+*.jsp linguist-language=Java
+*.svg linguist-language=Java
+*.png linguist-language=Java
+*.less linguist-language=Java
+*.jpg linguist-language=Java

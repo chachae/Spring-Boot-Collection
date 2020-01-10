@@ -26,6 +26,7 @@
         <module>spring-boot-exception-handler</module>
         <module>spring-boot-aop-log</module>
         <module>spring-boot-ratelimiter-guava</module>
+        <module>spring-boot-ratelimiter-redis</module>
     </modules>
 
     <!-- 依赖版本管理 -->
