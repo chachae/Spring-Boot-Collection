@@ -29,6 +29,7 @@
         <module>spring-boot-ratelimiter-redis</module>
         <module>spring-boot-fastDFS</module>
         <module>spring-boot-admin</module>
+        <module>spring-boot-redis-session</module>
     </modules>
 
     <!-- 依赖版本管理 -->

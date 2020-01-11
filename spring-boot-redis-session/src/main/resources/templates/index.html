@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>spring-boot-demo-session</title>
+</head>
+<body>
+token的值: <h1 th:text="${token}"></h1>
+
+退出：
+<button><a th:href="@{'/logout'}">logout</a></button>
+</body>
+</html>
