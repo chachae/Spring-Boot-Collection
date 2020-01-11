@@ -27,6 +27,7 @@
         <module>spring-boot-aop-log</module>
         <module>spring-boot-ratelimiter-guava</module>
         <module>spring-boot-ratelimiter-redis</module>
+        <module>spring-boot-fastDFS</module>
     </modules>
 
     <!-- 依赖版本管理 -->
@@ -36,6 +37,7 @@
         <guava.version>28.1-jre</guava.version>
         <hutool.version>5.1.0</hutool.version>
         <hibernate.validator.version>6.1.0.Final</hibernate.validator.version>
+        <fastdfs.client.version>1.26.7</fastdfs.client.version>
     </properties>
 
     <!-- 统一依赖管理 -->
