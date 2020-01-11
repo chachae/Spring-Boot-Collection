@@ -28,6 +28,7 @@
         <module>spring-boot-ratelimiter-guava</module>
         <module>spring-boot-ratelimiter-redis</module>
         <module>spring-boot-fastDFS</module>
+        <module>spring-boot-admin</module>
     </modules>
 
     <!-- 依赖版本管理 -->
