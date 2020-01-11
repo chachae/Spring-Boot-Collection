@@ -31,6 +31,8 @@
         <module>spring-boot-admin</module>
         <module>spring-boot-redis-session</module>
         <module>spring-boot-task</module>
+        <module>spring-boot-redis-lock</module>
+        <module>spring-boot-rest-template</module>
     </modules>
 
     <!-- 依赖版本管理 -->
