@@ -1,0 +1,7 @@
+spring:
+  task:
+    execution:
+      thread-name-prefix: chachae-Thread-
+    scheduling:
+      pool:
+        size: 20
