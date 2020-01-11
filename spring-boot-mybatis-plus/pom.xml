@@ -12,13 +12,6 @@
     <version>1.0-SNAPSHOT</version>
     <name>spring-boot-mybatis-plus</name>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <mybatis.plus.version>3.3.0</mybatis.plus.version>
-        <captcha.version>1.6.2</captcha.version>
-        <joda.time.version>2.10.5</joda.time.version>
-    </properties>
-
     <dependencies>
 
         <!-- mybatis-plus-boot-starter -->

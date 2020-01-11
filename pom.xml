@@ -30,16 +30,21 @@
         <module>spring-boot-fastDFS</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-redis-session</module>
+        <module>spring-boot-task</module>
     </modules>
 
     <!-- 依赖版本管理 -->
     <properties>
+        <java.version>1.8</java.version>
         <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
         <mysql.version>5.1.48</mysql.version>
         <guava.version>28.1-jre</guava.version>
         <hutool.version>5.1.0</hutool.version>
         <hibernate.validator.version>6.1.0.Final</hibernate.validator.version>
         <fastdfs.client.version>1.26.7</fastdfs.client.version>
+        <joda.time.version>2.10.5</joda.time.version>
+        <mybatis.plus.version>3.3.0</mybatis.plus.version>
+        <captcha.version>1.6.2</captcha.version>
     </properties>
 
     <!-- 统一依赖管理 -->
