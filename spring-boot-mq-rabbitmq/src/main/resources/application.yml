@@ -1,0 +1,6 @@
+spring:
+  rabbitmq:
+    host: vm.cn
+    port: 5672
+    username: guest
+    password: 123
