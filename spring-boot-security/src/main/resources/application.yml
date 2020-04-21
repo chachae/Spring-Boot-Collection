@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: spring-boot-security
+
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql:///rbac-common?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+
+  thymeleaf:
+    cache: false
+
+mybatis-plus:
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+  configuration:
+    map-underscore-to-camel-case: true
