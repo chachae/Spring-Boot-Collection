@@ -22,20 +22,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http
-        .csrf().disable()
-        .authorizeRequests()
-        .antMatchers("/r/p1").hasAnyAuthority("p1")
-        .antMatchers("/r/p2").hasAnyAuthority("p2")
-        .antMatchers("/r/**")
-        .authenticated()
-        .anyRequest()
-        .permitAll()
+
+    http.csrf().disable()
+        .requestMatchers().antMatchers("/**")
         .and()
         .formLogin()
-        .loginPage("/login-view")
+        .loginPage("/login")
         .loginProcessingUrl("/login")
         .successForwardUrl("/success")
+        .and()
+        .authorizeRequests()
+        .antMatchers("/login", "/").permitAll()
+        .antMatchers("/**").authenticated()
         .and()
         // session 会话管理
         .sessionManagement()
