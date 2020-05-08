@@ -1,6 +1,6 @@
 package com.chachae.ratelimiter.guava.controller;
 
-import com.chachae.ratelimiter.guava.annotation.RateLimiter;
+import com.chachae.ratelimiter.guava.annotation.Limit;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +21,7 @@ public class TestController {
   }
 
   @GetMapping("/on")
-  @RateLimiter(value = 2,timeout = 300)
+  @Limit(value = 2,timeout = 1)
   public ResponseEntity<String> onRateLimit() {
     String msg = "本接口限流，qps=2";
     return ResponseEntity.ok(msg);

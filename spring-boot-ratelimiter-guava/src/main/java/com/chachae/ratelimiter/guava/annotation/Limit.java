@@ -17,21 +17,31 @@ import java.util.concurrent.TimeUnit;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface RateLimiter {
+public @interface Limit {
 
   int NOT_LIMITED = 0;
 
-  /** qps */
+  /**
+   * qps
+   */
   @AliasFor("qps")
   double value() default NOT_LIMITED;
 
-  /** qps */
+  /**
+   * qps
+   */
   @AliasFor("value")
   double qps() default NOT_LIMITED;
 
-  /** 超时时长 */
+  /**
+   * 超时时长
+   */
   int timeout() default 0;
 
-  /** 超时时间单位 */
-  TimeUnit timeUnit() default TimeUnit.MICROSECONDS;
+  /**
+   * 超时时间单位
+   */
+  TimeUnit timeUnit() default TimeUnit.SECONDS;
+
+
 }
