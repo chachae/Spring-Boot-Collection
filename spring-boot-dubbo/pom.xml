@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
-        <dubbo.version>2.7.5</dubbo.version>
+        <dubbo.version>2.7.15</dubbo.version>
         <zkclient.version>0.11</zkclient.version>
     </properties>
 
